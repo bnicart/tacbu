@@ -20,15 +20,11 @@ angular.module('starter.controllers', [])
   console.log($scope.newsfeeds);
 })
 
-.controller('ChatsCtrl', function($scope, Chats) {
+.controller('HistoryCtrl', function($scope, Chats) {
   $scope.chats = Chats.all();
   $scope.remove = function(chat) {
     Chats.remove(chat);
   };
-})
-
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
-  $scope.chat = Chats.get($stateParams.chatId);
 })
 
 .controller('ProfileCtrl', function($scope) {
