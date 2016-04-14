@@ -1,0 +1,53 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title">Create Activity</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closeCreateActivityModal()">Close</button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <form ng-submit="createActivity()" name="createActivityForm">
+      <div class="list">
+        <label class="item item-input item-select">
+          <span class="input-label">Category</span>
+          <select ng-model="newActivityData.category_id" ng-options="category.id as category.name for category in categories" required>
+            <option value=""></option>
+          </select>
+        </label>
+        <label class="item item-input" ion-datetime-picker ng-model="newActivityData.date_from" required>
+          <span class="input-label">Date From</span>
+          <strong>{{ newActivityData.date_from | date: "yyyy-MM-dd H:mm"}}</strong>
+        </label>
+        <label class="item item-input" ion-datetime-picker ng-model="newActivityData.date_to" required>
+          <span class="input-label">Date To</span>
+          <strong>{{ newActivityData.date_to | date: "yyyy-MM-dd H:mm"}}</strong>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Location</span>
+          <select ng-model="newActivityData.location_id" ng-options="location.id as location.city for location in locations" required>
+            <option value=""></option>
+          </select>
+        </label>
+        <label class="item item-input item-select">
+          <span class="input-label">Preferred Gender</span>
+          <select ng-model="newActivityData.preferred_gender" required>
+            <option value='n' selected>None</option>
+            <option value='m'>Male</option>
+            <option value='f'>Female</option>
+          </select>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Name</span>
+          <input type="text" ng-model="newActivityData.name" required>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Description</span>
+          <textarea ng-model="newActivityData.description" placeholder="(Optional)"></textarea>
+        </label>
+        <label class="item">
+          <button class="button button-block button-positive" type="submit" ng-disabled="createActivityForm.$invalid || isCreating">Create</button>
+        </label>
+      </div>
+    </form>
+  </ion-content>
+</ion-modal-view>

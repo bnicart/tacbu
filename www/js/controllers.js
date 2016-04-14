@@ -14,10 +14,54 @@ angular.module('starter.controllers', [])
   $scope.activity = Activity.show(parseInt($state.params.id))
 })
 
-.controller('NewsFeedCtrl', function($scope, $state, Activity) {
+.controller('NewsFeedCtrl', function($scope, $state, $ionicModal, $ionicLoading, Category, Location, Activity) {
   // $scope.newsfeeds = Activity.all('newsfeed');
-  $scope.newsfeeds = Activity.newsfeed();
-  console.log($scope.newsfeeds);
+  $scope.newActivityData = {};
+  $scope.newsfeeds = [];
+  $scope.categories = [];
+  $scope.locations = [];
+  $scope.isCreating = false;
+
+  Activity.all().then(function(response) {
+    $scope.newsfeeds = response.data;
+  });
+
+  Category.all().then(function(response) {
+    $scope.categories = response.data;
+  });
+
+  Location.all().then(function(response) {
+    $scope.locations = response.data;
+  });
+
+  $ionicModal.fromTemplateUrl('templates/activity/new.html', {
+    scope: $scope
+  }).then(function(modal) {
+    $scope.modal = modal;
+  });
+
+  $scope.openCreateActivityModal = function() {
+    $scope.modal.show();
+  }
+
+  $scope.closeCreateActivityModal = function() {
+    $scope.modal.hide();
+  }
+
+  $scope.createActivity = function() {
+    var data = {
+      activity: $scope.newActivityData
+    }
+    $scope.isCreating = true;
+    $ionicLoading.show({
+      template: 'Creating...'
+    });
+    Activity.create(data).then(function(response) {
+      $scope.isCreating = false;
+      $ionicLoading.hide();
+      $scope.modal.hide();
+    })
+  }
 })
 
 .controller('HistoryCtrl', function($scope, Chats) {

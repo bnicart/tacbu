@@ -1,4 +1,9 @@
 <ion-view view-title="News Feed">
+  <ion-nav-buttons side="right">
+    <button class="button button-clear button-balanced" ng-click="openCreateActivityModal()">
+      <i class="ion-plus-circled icon-large"></i>
+    </button>
+  </ion-nav-buttons>
   <ion-content>
     <div class="card" ng-repeat="newsfeed in newsfeeds" ui-sref="activity-details(newsfeed)">
       <div class="item item-avatar ">
