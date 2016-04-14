@@ -1,4 +1,4 @@
-var server_url = 'http://26d973b2.ngrok.io'
+var server_url = 'http://tacbu.herokuapp.com'
 angular.module('starter.services', [])
 .service('UserService', function($http) {
   // For the purpose of this example I will store user data on ionic local storage but you should save it on a database
