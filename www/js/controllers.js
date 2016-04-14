@@ -167,11 +167,7 @@ angular.module('starter.controllers', [])
   }
 })
 
-.controller('HistoryCtrl', function($scope, Chats) {
-  $scope.chats = Chats.all();
-  $scope.remove = function(chat) {
-    Chats.remove(chat);
-  };
+.controller('HistoryCtrl', function($scope) {
 })
 
 .controller('ProfileCtrl', function($scope) {
