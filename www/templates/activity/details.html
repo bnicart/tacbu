@@ -1,0 +1,21 @@
+<ion-view view-title="Activity" hide-nav-bar="true">
+  <!-- <ion-nav-buttons side="primary"> -->
+    <!-- <button class="button" ng-click="goBack()">
+      <i class="ion-chevron-left"></i> Back
+    </button> -->
+  <!-- </ion-nav-buttons> -->
+  <ion-content>
+    <button class="button" ng-click="goBack()">
+      <i class="ion-chevron-left"></i> Back
+    </button>
+    <div class="card custom-card">
+      <div class="item item-avatar custom-item-avatar">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Emblem-person-green.svg/200px-Emblem-person-green.svg.png">
+        <h2>{{ activity.title }}</h2>
+        <p>{{ activity.date | fromNow }}</p>
+        <p>{{ activity.category }}</p>
+        <p>By {{ activity.organizer }}</p>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

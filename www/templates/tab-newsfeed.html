@@ -1,0 +1,13 @@
+<ion-view view-title="News Feed">
+  <ion-content>
+    <div class="card" ng-repeat="newsfeed in newsfeeds" ui-sref="activity-details(newsfeed)">
+      <div class="item item-avatar ">
+        <img src="http://cdn-img.easyicon.net/png/11100/1110055.gif">
+        <h2>{{ newsfeed.title }}</h2>
+        <p>{{ newsfeed.date | fromNow }}</p>
+        <p>{{ newsfeed.category }}</p>
+        <p>By {{ newsfeed.organizer }}</p>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

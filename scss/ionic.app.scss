@@ -14,10 +14,23 @@ $assertive:                       #ef473a !default;
 $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
-
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
-
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
-
+.custom-card {
+  overflow: visible;
+  border: 1px solid #00BEFF;
+  margin-top: 40px;
+}
+.custom-item-avatar {
+  overflow: visible;
+  padding: 16px;
+}
+.item.item-avatar.custom-item-avatar img {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  max-width: 70px;
+  max-height: 70px;
+}

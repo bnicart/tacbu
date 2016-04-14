@@ -9730,3 +9730,19 @@ a.button {
   opacity: 0;
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
+
+.custom-card {
+  overflow: visible;
+  border: 1px solid #00BEFF;
+  margin-top: 40px; }
+
+.custom-item-avatar {
+  overflow: visible;
+  padding: 16px; }
+
+.item.item-avatar.custom-item-avatar img {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  max-width: 70px;
+  max-height: 70px; }
