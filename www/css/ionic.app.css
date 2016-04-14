@@ -9733,8 +9733,8 @@ a.button {
 
 .custom-card {
   overflow: visible;
-  border: 1px solid #00BEFF;
-  margin-top: 40px; }
+  margin-top: 40px;
+  border: 1px solid #00beff; }
 
 .custom-item-avatar {
   overflow: visible;
@@ -9746,6 +9746,6 @@ a.button {
 .item.item-avatar.custom-item-avatar img {
   position: absolute;
   left: 50%;
-  transform: translate(-50%, -100%);
   max-width: 70px;
-  max-height: 70px; }
+  max-height: 70px;
+  transform: translate(-50%, -100%); }

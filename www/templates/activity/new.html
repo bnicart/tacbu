@@ -22,7 +22,7 @@
           <span class="input-label">Date To</span>
           <strong>{{ newActivityData.date_to | date: "yyyy-MM-dd H:mm"}}</strong>
         </label>
-        <label class="item item-input">
+        <label class="item item-input item-select">
           <span class="input-label">Location</span>
           <select ng-model="newActivityData.location_id" ng-options="location.id as location.city for location in locations" required>
             <option value=""></option>
