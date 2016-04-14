@@ -49,6 +49,7 @@ angular.module('starter.controllers', [])
   $scope.closeCreateActivityModal = function() {
     $scope.modal.hide();
   }
+  console.log($ionicLoading);
 
   $scope.createActivity = function() {
     var data = {
@@ -56,7 +57,7 @@ angular.module('starter.controllers', [])
     }
     $scope.isCreating = true;
     $ionicLoading.show({
-      template: 'Creating...'
+      template: '<ion-spinner></ion-spinner>&nbsp;&nbsp;&nbsp; <span style="vertical-align: super">Creating...</span>'
     });
     Activity.create(data).then(function(response) {
       $scope.isCreating = false;
