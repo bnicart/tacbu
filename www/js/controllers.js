@@ -11,7 +11,9 @@ angular.module('starter.controllers', [])
   $scope.goBack = function() {
     $ionicHistory.goBack();
   };
-  $scope.activity = Activity.show(parseInt($state.params.id))
+  Activity.show(parseInt($state.params.id)).then(function(response) {
+    $scope.activity = response.data;
+  })
 })
 
 .controller('NewsFeedCtrl', function($scope, $state, $ionicModal, $ionicLoading, Category, Location, Activity) {

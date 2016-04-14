@@ -42,7 +42,7 @@ angular.module('starter.services', [])
   }
 
   function show(id) {
-    return newsfeed_items.find(id)
+    return $http.get('http://26d973b2.ngrok.io/api/v1/activities/' + id);
   }
 
   var service = {
