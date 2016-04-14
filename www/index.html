@@ -4,8 +4,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title></title>
-
-
     <!-- compiled css output -->
     <link href="css/ionic.app.css" rel="stylesheet">
     <link href="lib/ion-datetime-picker/release/ion-datetime-picker.min.css" rel="stylesheet">
@@ -14,7 +12,6 @@
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
     <script src="lib/moment/moment.js"></script>
-    <script src="lib/satellizer/satellizer.min.js"></script>
     <script src="lib/ion-datetime-picker/release/ion-datetime-picker.min.js"></script>
 
     <!-- cordova script (this will be a 404 during development) -->
@@ -27,6 +24,27 @@
     <script src="js/filters.js"></script>
   </head>
   <body ng-app="starter">
+    <!--Comment begin when building android app -->
+    <div id="fb-root"></div>
+    <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '625749530914767',
+      xfbml      : true,
+      version    : 'v2.6'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <script type="text/javascript" src="lib/facebookConnectPlugin.js"></script>
+    <!--Comment end when building android app -->
     <!--
       The nav bar that will be updated as we navigate between views.
     -->

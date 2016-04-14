@@ -1,6 +1,27 @@
 var server_url = 'http://26d973b2.ngrok.io'
-
 angular.module('starter.services', [])
+.service('UserService', function($http) {
+  // For the purpose of this example I will store user data on ionic local storage but you should save it on a database
+  var setUser = function(user_data) {
+    window.localStorage.starter_facebook_user = JSON.stringify(user_data);
+  };
+
+  var getUser = function(){
+    return JSON.parse(window.localStorage.starter_facebook_user || '{}');
+  };
+
+  var saveAccount = function(userInfo){
+    $http.post(server_url + "/api/v1/sessions",userInfo).then(function(response){
+      console.log(response);
+    })
+  };
+
+  return {
+    getUser: getUser,
+    setUser: setUser,
+    saveAccount: saveAccount
+  };
+})
 
 .factory('httpRequestInterceptor', function() {
   return {
