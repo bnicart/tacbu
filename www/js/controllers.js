@@ -152,6 +152,7 @@ angular.module('starter.controllers', [])
   $scope.categories = [];
   $scope.locations = [];
   $scope.isCreating = false;
+  $scope.selectedCategory = '0';
 
   $scope.doRefresh = function() {
     Activity.all().then(function(response) {
@@ -190,6 +191,12 @@ angular.module('starter.controllers', [])
   }).then(function(modal) {
     $scope.modal = modal;
   });
+
+  $scope.updateFeeds = function () {
+    Activity.all($scope.selectedCategory).then(function(response) {
+      $scope.newsfeeds = response.data;
+    });
+  }
 
   $scope.openCreateActivityModal = function() {
     $scope.modal.show();
