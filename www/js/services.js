@@ -20,7 +20,7 @@ angular.module('starter.services', [])
   };
 
   var login = function(data) {
-    return $http.post(server_url + "/api/v1/sessions", data);
+    return $http.post(server_url + "/api/v1/sessions", {auth:data});
   }
 
   return {

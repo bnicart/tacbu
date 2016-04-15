@@ -7,7 +7,7 @@ angular.module('starter.controllers', [])
     $ionicLoading.show({
       template: '<ion-spinner></ion-spinner>&nbsp;&nbsp;&nbsp; <span style="vertical-align: super">Logging in...</span>'
     });
-    UserService.login().then(function(response) {
+    UserService.login($scope.loginData).then(function(response) {
       window.localStorage.api_key = response.data.api_key;
       $ionicLoading.hide();
       $state.go('tab.newsfeed')
