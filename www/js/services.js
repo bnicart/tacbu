@@ -75,10 +75,20 @@ angular.module('starter.services', [])
     return $http.get(server_url + '/api/v1/activities/' + id);
   }
 
+  function mine() {
+    return $http.get(server_url + '/api/v1/activity_search/mine');
+  }
+
+  function join(data) {
+    return $http.post(server_url + '/api/v1/joiner/activity_participations', data);
+  }
+
   var service = {
     create: create,
     all: all,
-    show: show
+    show: show,
+    mine: mine,
+    join: join
   }
   return service;
 })

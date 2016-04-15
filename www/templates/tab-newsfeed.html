@@ -18,7 +18,7 @@
         No available activities yet...
       </div>
     </div>
-    <div class="card" ng-repeat="newsfeed in newsfeeds" ui-sref="activity-details(newsfeed)">
+    <div class="card" ng-repeat="newsfeed in newsfeeds" >
       <div class="item item-avatar ">
         <img ng-src="{{ newsfeed.organized_by.image }}">
         <h2>{{ newsfeed.name }}</h2>
@@ -26,7 +26,10 @@
         <p>{{ newsfeed.category.name }}</p>
         <p>By
           {{ newsfeed.organized_by.name }}</p>
-        <button type="button" class="button button-balanced top-right" ng-click="join()">Join</button>
+        <div class="top-right">
+          <button type="button" class="button button-small button-balanced " ui-sref="activity-details(newsfeed)">View</button>
+          <button type="button" class="button button-small button-balanced " ng-click="join(newsfeed)">Join</button>
+        </div>
       </div>
     </div>
   </ion-content>

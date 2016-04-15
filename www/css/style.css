@@ -78,7 +78,7 @@
 
 .card .login-item
 {
-background: rgba(255,255,255,0.0)    
+background: rgba(255,255,255,0.0)
 }
 
 .activity-details
@@ -96,7 +96,6 @@ background: rgba(255,255,255,0.0)
 }
 
 /* login padding*/
-.row {
+.loginPage .row {
     padding: 40px;
 }
-

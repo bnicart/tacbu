@@ -126,12 +126,18 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('ActivityCtrl', function($scope, $state, $ionicHistory, Activity) {
+.controller('ActivityCtrl', function($scope, $state, $ionicHistory, $ionicLoading, Activity) {
+  $scope.isLoading = true;
   $scope.goBack = function() {
     $ionicHistory.goBack();
   };
+  $ionicLoading.show({
+    template: '<ion-spinner></ion-spinner>&nbsp;&nbsp;&nbsp; <span style="vertical-align: super">Loading...</span>'
+  });
   Activity.show(parseInt($state.params.id)).then(function(response) {
     $scope.activity = response.data;
+    $scope.isLoading = false;
+    $ionicLoading.hide();
   })
 })
 
@@ -151,6 +157,18 @@ angular.module('starter.controllers', [])
     Activity.all().then(function(response) {
       $scope.newsfeeds = response.data;
       $scope.$broadcast('scroll.refreshComplete');
+    });
+  }
+
+  $scope.join = function(activity) {
+    console.log(activity);
+    console.log(UserService.getUser());
+    var data = {
+      activity_id: activity.id,
+      joiner_id: UserService.getUser().userID
+    }
+    Activity.join(data).then(function(response) {
+      console.log(response);
     });
   }
 
@@ -200,10 +218,16 @@ angular.module('starter.controllers', [])
 .controller('HistoryCtrl', function($scope) {
 })
 
-.controller('ProfileCtrl', function($scope, UserService) {
+.controller('ProfileCtrl', function($scope, UserService, Activity) {
   $scope.currentUser = UserService.getUser();
+  $scope.doRefresh = function() {
+    Activity.mine().then(function(response) {
+      $scope.currentUser.activities = response.data;
+      $scope.$broadcast('scroll.refreshComplete');
+    })
+  }
+  Activity.mine().then(function(response) {
+    $scope.currentUser.activities = response.data;
+  })
   console.log($scope.currentUser);
-  $scope.settings = {
-    enableFriends: true
-  };
 });
