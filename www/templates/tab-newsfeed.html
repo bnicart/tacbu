@@ -12,6 +12,7 @@
     <button class="button">Edit</button>
   </div>
   <ion-content>
+    <ion-refresher pulling-text="Pull to refresh..." on-refresh="doRefresh()"></ion-refresher>
     <div class="card text-center" ng-if="!newsfeeds.length">
       <div class="item item-text-wrap">
         No available activities yet...
@@ -25,6 +26,7 @@
         <p>{{ newsfeed.category.name }}</p>
         <p>By
           {{ newsfeed.organized_by.name }}</p>
+        <button type="button" class="button button-balanced bottom-right" ng-click="join()">Join</button>
       </div>
     </div>
   </ion-content>
