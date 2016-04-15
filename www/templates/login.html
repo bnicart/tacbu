@@ -1,30 +1,25 @@
 <ion-view view-title="" hide-nav-bar="true">
-  <ion-content>
-    <!-- <div class="list">
-      <div class="item item-body login-item">
-        <img class="full-image" style="height: 359px; width: 359px;">
-        <a class="facebook-sign-in button button-block button-positive" ng-click="facebookSignIn()">Login with Facebook</a>
-      </div>
-    </div> -->
-    <div class="row whole-height">
-      <div class="col col-center">
-        <form name="loginForm" ng-submit="login()">
-          <div class="list">
-            <label class="item item-input item-stacked-label">
-              <span class="input-label">Email</span>
-              <input type="email" ng-model="loginData.email" placeholder="beli.nicart@gmail.com" required>
-            </label>
-            <label class="item item-input item-stacked-label">
-              <span class="input-label">Password</span>
-              <input type="password" ng-model="loginData.password" placeholder="*******" required>
-            </label>
-            <button class="button button-balanced button-block" type="submit" ng-disabled="loginForm.$invalid">
-              Login
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
+    <ion-content class="bg-image">
+        <div class="row whole-height">
+            <div class="col col-center">
+                <div style="height: 100px; width: 100%;">
+                    <p class="tacbu-text">tacbu</p>
+                </div>
+                <form name="loginForm" ng-submit="login()">
+                    <div class="list">
+                        <label class="item item-input">
+                            <input type="email" placeholder="Email" ng-model="loginData.email" placeholder="beli.nicart@gmail.com" required>
+                        </label>
+                        <label class="item item-input">
+                            <input type="password" placeholder="Password" ng-model="loginData.password" placeholder="*******" required>
+                        </label>
+                        <button class="button button-positive button-block" type="submit" ng-disabled="loginForm.$invalid">
+                            Login
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
 
-  </ion-content>
+        </ion-content>
 </ion-view>

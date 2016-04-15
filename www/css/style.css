@@ -2,9 +2,31 @@
 
 .bg-newsfeed
 {
-    background-color: #ebeae7;
+    background-color: #fdceda;
 }
 
+/* Tab background color */
+.tabs-striped.tabs-background-positive .tabs {
+    background-color: #f50e4a;
+    background-image: none;
+}
+
+/* Ion Header bar */
+.bar.bar-stable {
+    background-color: #B5103B;
+}
+
+/* Font Color in Header bar */
+.bar.bar-stable .title {
+    color: #FFF;
+}
+
+/* Width between cards*/
+.card, .list-inset {
+    margin: 10px 10px;
+}
+
+/* FAB */
 .float-button
 {
     font-size: 40px;
@@ -23,8 +45,8 @@
     opacity: .9;
     color: white;
     border-radius: 50%;
-    background-color: #387ef5;
-    box-shadow: 3px 3px 3px rgba(56, 126, 245, .5);
+    background-color: #f50e4a;
+    box-shadow: 3px 3px 3px rgba(245, 14, 74, .5);
 }
 .float-button .height_fix
 {
@@ -47,13 +69,34 @@
     color: white;
 }
 
+/*Login background image*/
 .bg-image
 {
-     background: url("http://blazrobar.com/wp-content/uploads/2015/05/Free-places-to-download-stock-photos.jpg") no-repeat center;
-    background-size: 310%;
+    background: url("http://www.restlesspress.net/wp-content/uploads/2014/11/friends.jpg") no-repeat center;
+    background-size: 200% 100%;
 }
 
 .card .login-item
 {
 background: rgba(255,255,255,0.0)    
 }
+
+.activity-details
+{
+    font-size: 10px;
+}
+
+.col .tacbu-text
+{
+    font-size: 100px;
+    color: #fff;
+    font-family: 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif;
+    text-align: center;
+    line-height: 100px;
+}
+
+/* login padding*/
+.row {
+    padding: 40px;
+}
+
