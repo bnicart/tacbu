@@ -6,6 +6,11 @@
       </a>
     </span>
   </div>
+  <div class="bar bar-header">
+    <button class="button icon ion-navicon"></button>
+    <h1 class="title">Header Buttons</h1>
+    <button class="button">Edit</button>
+  </div>
   <ion-content>
     <div class="card text-center" ng-if="!newsfeeds.length">
       <div class="item item-text-wrap">
@@ -14,7 +19,7 @@
     </div>
     <div class="card" ng-repeat="newsfeed in newsfeeds" ui-sref="activity-details(newsfeed)">
       <div class="item item-avatar ">
-        <img src="http://cdn-img.easyicon.net/png/11100/1110055.gif">
+        <img ng-src="{{ newsfeed.organized_by.image }}">
         <h2>{{ newsfeed.name }}</h2>
         <p>{{ newsfeed.date_from | fromNow }}</p>
         <p>{{ newsfeed.category.name }}</p>

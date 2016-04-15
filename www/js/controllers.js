@@ -9,6 +9,13 @@ angular.module('starter.controllers', [])
     });
     UserService.login($scope.loginData).then(function(response) {
       window.localStorage.api_key = response.data.api_key;
+      var profileInfo = response.data;
+      UserService.setUser({
+        userID: profileInfo.id,
+        name: profileInfo.name,
+        email: profileInfo.email,
+        picture : profileInfo.image
+      });
       $ionicLoading.hide();
       $state.go('tab.newsfeed')
     });

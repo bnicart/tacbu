@@ -10,7 +10,7 @@
     </button>
     <div class="card custom-card">
       <div class="item item-avatar custom-item-avatar">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Emblem-person-green.svg/200px-Emblem-person-green.svg.png">
+        <img ng-src="{{ activity.organized_by.image }}">
         <h2>{{ activity.name }}</h2>
         <p>{{ activity.date_from | fromNow }}</p>
         <p>{{ activity.category.name | uppercase }}</p>
