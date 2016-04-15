@@ -14,15 +14,14 @@
   <ion-content>
     <ion-refresher pulling-text="Pull to refresh..." on-refresh="doRefresh()"></ion-refresher>
     <label class="item item-input item-select">
-      <div class="input-label">
-        Filter by
-      </div>
-      <select ng-model="selectedCategory" ng-change="updateFeeds()">
-        <option value=0 disabled="disabled">Categories...</option>
-        <option ng-repeat="category in categories" value="{{category.id}}">{{category.name}}</option>
-      </select>
+    <div class="input-label">
+      Filter by
+    </div>
+    <select ng-model="categories.selectedCategory" ng-change="updateFeeds()">
+      <option value="0" disabled="disabled">Categories...</option> 
+      <option ng-repeat="category in categories" value="{{category.id}}">{{category.name}}</option>
+    </select>
     </label>
-    <ion-refresher pulling-text="Pull to refresh..." on-refresh="doRefresh()"></ion-refresher>
     <div class="card text-center" ng-if="!newsfeeds.length">
       <div class="item item-text-wrap">
         No available activities yet...

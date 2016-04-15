@@ -149,10 +149,12 @@ angular.module('starter.controllers', [])
   // $scope.newsfeeds = Activity.all('newsfeed');
   $scope.newActivityData = {};
   $scope.newsfeeds = [];
-  $scope.categories = [];
+  $scope.categories = {
+    selectedCategory: '0',
+    categoryLists: []
+  };
   $scope.locations = [];
   $scope.isCreating = false;
-  $scope.selectedCategory = '0';
 
   $scope.doRefresh = function() {
     Activity.all().then(function(response) {
@@ -185,7 +187,7 @@ angular.module('starter.controllers', [])
   });
 
   Category.all().then(function(response) {
-    $scope.categories = response.data;
+    $scope.categories.categoryLists = response.data;
   });
 
   Location.all().then(function(response) {
@@ -199,7 +201,8 @@ angular.module('starter.controllers', [])
   });
 
   $scope.updateFeeds = function () {
-    Activity.all($scope.selectedCategory).then(function(response) {
+    console.log($scope.selectedCategory);
+    Activity.all($scope.categories.selectedCategory).then(function(response) {
       $scope.newsfeeds = response.data;
     });
   }
