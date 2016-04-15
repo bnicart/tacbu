@@ -2,7 +2,7 @@
 
 .bg-newsfeed
 {
-    background-color: #fdceda;
+    background-color: #cccccc;
 }
 
 /* Tab background color */
@@ -40,18 +40,17 @@
     /*border-radius:15% 0 0 0;*/
 
     width: 30px;
-    padding: 24px;
+    padding: 26px;
 
     opacity: .9;
     color: white;
     border-radius: 50%;
     background-color: #465BA7;
-    box-shadow: 3px 3px 3px rgba(181, 189,219, .5);
+    box-shadow: 3px 3px 3px rgba(1, 1,1, .5);
 }
 .float-button .height_fix
 {
     margin-top: 100%;
-
     border: 1px solid red;
 }
 .float-button .content
@@ -72,18 +71,24 @@
 /*Login background image*/
 .bg-image
 {
-    background: url("http://www.restlesspress.net/wp-content/uploads/2014/11/friends.jpg") no-repeat center;
+    /*background: url(../img/login_bg.jpg) no-repeat center; */
+    background: url(http://www.restlesspress.net/wp-content/uploads/2014/11/friends.jpg) no-repeat center;
     background-size: 200% 100%;
 }
 
-.card .login-item
+
+/* activity details in newsfeed or history */
+.activity-details p
 {
-background: rgba(255,255,255,0.0)
+background: rgba(255,255,255,0.0);
+    font-size: 14px;
+    line-height: 16px;
 }
 
-.activity-details
-{
-    font-size: 10px;
+/* activity title */
+.card h2
+{    
+    font-weight: 500;
 }
 
 .col .tacbu-text
@@ -98,4 +103,14 @@ background: rgba(255,255,255,0.0)
 /* login padding*/
 .loginPage .row {
     padding: 40px;
+}
+
+/* color of all button-positive */
+.button.button-positive {
+    background-color: #465BA7;
+}
+
+.item-avatar img
+{
+    line-height: 100px;
 }

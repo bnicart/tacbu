@@ -1,36 +1,33 @@
 <ion-view view-title="News Feed" class="bg-newsfeed">
-  <div class="float-button" ng-click="openCreateActivityModal()">
-    <span class="height-fix">
+    <div class="float-button" ng-click="openCreateActivityModal()">
+        <span class="height-fix">
       <a class="content">
         <i class="ion-ios-plus-empty"></i>
       </a>
     </span>
-  </div>
-  <div class="bar bar-header">
-    <button class="button icon ion-navicon"></button>
-    <h1 class="title">Header Buttons</h1>
-    <button class="button">Edit</button>
-  </div>
-  <ion-content>
-    <ion-refresher pulling-text="Pull to refresh..." on-refresh="doRefresh()"></ion-refresher>
-    <div class="card text-center" ng-if="!newsfeeds.length">
-      <div class="item item-text-wrap">
-        No available activities yet...
-      </div>
     </div>
-    <div class="card" ng-repeat="newsfeed in newsfeeds" >
-      <div class="item item-avatar ">
+    
+    <ion-content>
+        <ion-refresher pulling-text="Pull to refresh..." on-refresh="doRefresh()"></ion-refresher>
+        <div class="card text-center" ng-if="!newsfeeds.length">
+            <div class="item item-text-wrap">
+                No available activities yet...
+            </div>
+        </div>
+        <div class="card" ng-repeat="newsfeed in newsfeeds" >
+      <div class="item item-thumbnail-left">
         <img ng-src="{{ newsfeed.organized_by.image }}">
         <h2>{{ newsfeed.name }}</h2>
-        <p>{{ newsfeed.date_from | fromNow }}</p>
-        <p>{{ newsfeed.category.name }}</p>
-        <p>By
-          {{ newsfeed.organized_by.name }}</p>
+        <div class="activity-details">
+                    <p>{{ newsfeed.date_from | fromNow }}</p>
+                    <p>{{ newsfeed.category.name }}</p>
+                    <p>By {{ newsfeed.organized_by.name }}</p>
+                </div>
         <div class="top-right">
           <button type="button" class="button button-small button-balanced " ui-sref="activity-details(newsfeed)">View</button>
           <button type="button" class="button button-small button-balanced " ng-click="join(newsfeed)">Join</button>
         </div>
       </div>
     </div>
-  </ion-content>
+    </ion-content>
 </ion-view>
