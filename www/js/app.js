@@ -75,3 +75,7 @@ Array.prototype.find = function (id) {
     if(a.id === id) { return a;}
   }).first()
 };
+
+Array.prototype.has = function(item) {
+  return this.indexOf(item) !== (-1)
+}

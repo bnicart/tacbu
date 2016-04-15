@@ -1,6 +1,6 @@
 <ion-view view-title="News Feed" class="bg-newsfeed">
-    <div class="float-button" ng-click="openCreateActivityModal()">
-        <span class="height-fix">
+  <div class="float-button" ng-click="openCreateActivityModal()">
+    <span class="height-fix">
       <a class="content">
         <i class="ion-ios-plus-empty"></i>
       </a>
@@ -11,36 +11,38 @@
     <h1 class="title">Header Buttons</h1>
     <button class="button">Edit</button>
   </div>
-    <ion-content>
-        <ion-refresher pulling-text="Pull to refresh..." on-refresh="doRefresh()"></ion-refresher>
+  <ion-content>
+    <ion-refresher pulling-text="Pull to refresh..." on-refresh="doRefresh()"></ion-refresher>
     <label class="item item-input item-select">
-    <div class="input-label">
-      Filter by
-    </div>
-    <select ng-model="selectedCategory" ng-change="updateFeeds()">
-      <option value=0 disabled="disabled">Categories...</option> 
-      <option ng-repeat="category in categories" value="{{category.id}}">{{category.name}}</option>
-    </select>
+      <div class="input-label">
+        Filter by
+      </div>
+      <select ng-model="selectedCategory" ng-change="updateFeeds()">
+        <option value=0 disabled="disabled">Categories...</option>
+        <option ng-repeat="category in categories" value="{{category.id}}">{{category.name}}</option>
+      </select>
     </label>
-        <div class="card text-center" ng-if="!newsfeeds.length">
-            <div class="item item-text-wrap">
-                No available activities yet...
-            </div>
-        </div>
-        <div class="card" ng-repeat="newsfeed in newsfeeds" >
+    <ion-refresher pulling-text="Pull to refresh..." on-refresh="doRefresh()"></ion-refresher>
+    <div class="card text-center" ng-if="!newsfeeds.length">
+      <div class="item item-text-wrap">
+        No available activities yet...
+      </div>
+    </div>
+    <div class="card" ng-repeat="newsfeed in newsfeeds">
       <div class="item item-thumbnail-left">
         <img ng-src="{{ newsfeed.organized_by.image }}">
         <h2>{{ newsfeed.name }}</h2>
         <div class="activity-details">
-                    <p>{{ newsfeed.date_from | fromNow }}</p>
-                    <p>{{ newsfeed.category.name }}</p>
-                    <p>By {{ newsfeed.organized_by.name }}</p>
-                </div>
+          <p>{{ newsfeed.date_from | fromNow }}</p>
+          <p>{{ newsfeed.category.name }}</p>
+          <p>By{{ newsfeed.organized_by.name }}</p>
+        </div>
         <div class="top-right">
-          <button type="button" class="button button-small button-balanced " ui-sref="activity-details(newsfeed)">View</button>
-          <button type="button" class="button button-small button-balanced " ng-click="join(newsfeed)">Join</button>
+          <button type="button" class="button button-small button-full button-positive" ui-sref="activity-details(newsfeed)">View</button>
+          <button type="button" class="button button-small button-full button-balanced " ng-if="!alreadyJoined(newsfeed)" ng-click="join(newsfeed)">Join</button>
+          <button type="button" class="button button-small button-full button-royal" ng-if="alreadyJoined(newsfeed)" ng-disabled="alreadyJoined(newsfeed)">Joined</button>
         </div>
       </div>
     </div>
-    </ion-content>
+  </ion-content>
 </ion-view>

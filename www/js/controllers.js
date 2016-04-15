@@ -162,15 +162,21 @@ angular.module('starter.controllers', [])
   }
 
   $scope.join = function(activity) {
-    console.log(activity);
-    console.log(UserService.getUser());
     var data = {
       activity_id: activity.id,
       joiner_id: UserService.getUser().userID
     }
-    Activity.join(data).then(function(response) {
-      console.log(response);
+    $ionicLoading.show({
+      template: '<ion-spinner></ion-spinner>&nbsp;&nbsp;&nbsp; <span style="vertical-align: super">Joining activity...</span>'
     });
+    Activity.join(data).then(function(response) {
+      $scope.doRefresh();
+      $ionicLoading.hide();
+    });
+  }
+
+  $scope.alreadyJoined = function(activity) {
+    return activity.joiners.has(UserService.getUser().userID)
   }
 
   Activity.all().then(function(response) {
