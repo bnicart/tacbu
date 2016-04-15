@@ -1,5 +1,10 @@
 /* Empty. Add your own CSS if you like */
 
+.bg-newsfeed
+{
+    background-color: #ebeae7;
+}
+
 .float-button
 {
     font-size: 40px;
@@ -9,7 +14,7 @@
     z-index: 1000;
     /* Adjust height */
     right: 5%;
-    bottom: 10%;
+    bottom: 5%;
     /*border-radius:15% 0 0 0;*/
 
     width: 30px;
@@ -40,4 +45,15 @@
     text-align: center;
 
     color: white;
+}
+
+.bg-image
+{
+     background: url("http://blazrobar.com/wp-content/uploads/2015/05/Free-places-to-download-stock-photos.jpg") no-repeat center;
+    background-size: 310%;
+}
+
+.card .login-item
+{
+background: rgba(255,255,255,0.0)    
 }
