@@ -7,13 +7,13 @@
 
 /* Tab background color */
 .tabs-striped.tabs-background-positive .tabs {
-    background-color: #f50e4a;
+    background-color: #465BA7;
     background-image: none;
 }
 
 /* Ion Header bar */
 .bar.bar-stable {
-    background-color: #B5103B;
+    background-color: #2F4A93;
 }
 
 /* Font Color in Header bar */
@@ -45,8 +45,8 @@
     opacity: .9;
     color: white;
     border-radius: 50%;
-    background-color: #f50e4a;
-    box-shadow: 3px 3px 3px rgba(245, 14, 74, .5);
+    background-color: #465BA7;
+    box-shadow: 3px 3px 3px rgba(181, 189,219, .5);
 }
 .float-button .height_fix
 {
