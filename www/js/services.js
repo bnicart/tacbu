@@ -1,6 +1,7 @@
 var server_url = 'http://tacbu.herokuapp.com'
+var server_url = 'http://26d973b2.ngrok.io'
 angular.module('starter.services', [])
-.service('UserService', function($http) {
+.service('UserService', function($http, $state) {
   // For the purpose of this example I will store user data on ionic local storage but you should save it on a database
   var setUser = function(user_data) {
     window.localStorage.starter_facebook_user = JSON.stringify(user_data);
@@ -11,8 +12,10 @@ angular.module('starter.services', [])
   };
 
   var saveAccount = function(userInfo){
+    console.log('saveAccount', userInfo);
     $http.post(server_url + "/api/v1/sessions",userInfo).then(function(response){
-      console.log(response);
+      window.localStorage.api_key = response.data.api_key;
+      $state.go('tab.newsfeed')
     })
   };
 
@@ -26,7 +29,7 @@ angular.module('starter.services', [])
 .factory('httpRequestInterceptor', function() {
   return {
     request: function(config) {
-      config.headers['Authorization'] = '123'
+      config.headers['Authorization'] = window.localStorage.getItem('api_key')
       return config;
     }
   }

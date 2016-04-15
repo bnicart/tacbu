@@ -1,6 +1,7 @@
 angular.module('starter.controllers', [])
 
 .controller('LoginCtrl', function($q, $scope, $state, $ionicLoading, UserService) {
+  window.localStorage.clear()
   //facebookConnectPlugin.browserInit(625749530914767, "");
   var fbLoginSuccess = function(response) {
     if (!response.authResponse){
@@ -21,8 +22,7 @@ angular.module('starter.controllers', [])
         picture : "http://graph.facebook.com/" + authResponse.userID + "/picture?type=large"
       });
 
-
-      UserService.saveAccount(profileInfo);
+      UserService.saveAccount(UserService.getUser());
       $ionicLoading.hide();
       $state.go('tab.newsfeed');
     }, function(fail){
@@ -43,11 +43,9 @@ angular.module('starter.controllers', [])
 
     facebookConnectPlugin.api('/me?fields=email,name&access_token=' + authResponse.accessToken, null,
       function (response) {
-        console.log(response);
         info.resolve(response);
       },
       function (response) {
-        console.log(response);
         info.reject(response);
       }
     );
@@ -56,7 +54,11 @@ angular.module('starter.controllers', [])
 
   //This method is executed when the user press the "Login with facebook" button
   $scope.facebookSignIn = function() {
+    $ionicLoading.show({
+      template: '<ion-spinner></ion-spinner>&nbsp;&nbsp;&nbsp; <span style="vertical-align: super">Logging in...</span>'
+    });
     facebookConnectPlugin.getLoginStatus(function(success){
+      console.log('success', success);
       if(success.status === 'connected'){
         // The user is logged in and has authenticated your app, and response.authResponse supplies
         // the user's ID, a valid access token, a signed request, and the time the access token
@@ -77,15 +79,15 @@ angular.module('starter.controllers', [])
               email: profileInfo.email,
               picture : "http://graph.facebook.com/" + success.authResponse.userID + "/picture?type=large"
             });
-
-            $state.go('tab.newsfeed');
+            $ionicLoading.hide();
+            UserService.saveAccount(UserService.getUser());
           }, function(fail){
             // Fail get profile info
             console.log('profile info fail', fail);
           });
         }else{
-          UserService.saveAccount(success.authResponse);
-          $state.go('tab.newsfeed');
+          $ionicLoading.hide();
+          UserService.saveAccount(UserService.getUser());
         }
       } else {
         // If (success.status === 'not_authorized') the user is logged in to Facebook,
@@ -96,7 +98,7 @@ angular.module('starter.controllers', [])
         console.log('getLoginStatus', success.status);
 
         $ionicLoading.show({
-          template: 'Logging in...'
+          template: '<ion-spinner></ion-spinner>&nbsp;&nbsp;&nbsp; <span style="vertical-align: super">Logging in...</span>'
         });
 
         // Ask the permissions you need. You can learn more about
@@ -116,7 +118,11 @@ angular.module('starter.controllers', [])
   })
 })
 
-.controller('NewsFeedCtrl', function($scope, $state, $ionicModal, $ionicLoading, Category, Location, Activity) {
+.controller('NewsFeedCtrl', function($scope, $state, $ionicModal, $ionicLoading, Category, Location, Activity, UserService) {
+  if(!window.localStorage.getItem('starter_facebook_user')) { $state.go('login');}
+  $ionicLoading.show({
+    template: '<ion-spinner></ion-spinner>&nbsp;&nbsp;&nbsp; <span style="vertical-align: super">Loading news feed...</span>'
+  });
   // $scope.newsfeeds = Activity.all('newsfeed');
   $scope.newActivityData = {};
   $scope.newsfeeds = [];
@@ -126,6 +132,7 @@ angular.module('starter.controllers', [])
 
   Activity.all().then(function(response) {
     $scope.newsfeeds = response.data;
+    $ionicLoading.hide();
   });
 
   Category.all().then(function(response) {
@@ -149,7 +156,6 @@ angular.module('starter.controllers', [])
   $scope.closeCreateActivityModal = function() {
     $scope.modal.hide();
   }
-  console.log($ionicLoading);
 
   $scope.createActivity = function() {
     var data = {
@@ -170,7 +176,9 @@ angular.module('starter.controllers', [])
 .controller('HistoryCtrl', function($scope) {
 })
 
-.controller('ProfileCtrl', function($scope) {
+.controller('ProfileCtrl', function($scope, UserService) {
+  $scope.currentUser = UserService.getUser();
+  console.log($scope.currentUser);
   $scope.settings = {
     enableFriends: true
   };

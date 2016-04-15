@@ -19,12 +19,10 @@
             e.src = document.location.protocol + '//connect.facebook.net/en_US/sdk.js';
             e.async = true;
             document.getElementById('fb-root').appendChild(e);
-            console.log(window.FB);
             if (!window.FB) {
                 // Probably not on server, use the sample sdk
                 e.src = 'phonegap/plugin/facebookConnectPlugin/fbsdk.js';
                 document.getElementById('fb-root').appendChild(e);
-                console.log("Attempt local load: ", e);
             }
         }
     }());
@@ -66,7 +64,7 @@
             if (!options.picture) {
                 options.picture = "";
             }
-            
+
             // Try will catch errors when SDK has not been init
             try {
                 FB.ui(options,
@@ -92,7 +90,7 @@
             if (permissions && permissions.length > 0) {
                 permissionObj.scope = permissions.toString();
             }
-            
+
             FB.login(function (response) {
                 if (response.authResponse) {
                     s(response);
@@ -142,7 +140,7 @@
 
         api: function (graphPath, permissions, s, f) {
             // JS API does not take additional permissions
-            
+
             // Try will catch errors when SDK has not been init
             try {
                 FB.api(graphPath, function (response) {
