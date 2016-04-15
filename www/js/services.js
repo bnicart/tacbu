@@ -19,10 +19,15 @@ angular.module('starter.services', [])
     })
   };
 
+  var login = function(data) {
+    return $http.post(server_url + "/api/v1/sessions", data);
+  }
+
   return {
     getUser: getUser,
     setUser: setUser,
-    saveAccount: saveAccount
+    saveAccount: saveAccount,
+    login: login
   };
 })
 

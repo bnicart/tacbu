@@ -9731,6 +9731,9 @@ a.button {
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
 
+.whole-height {
+  height: 100vh; }
+
 .custom-card {
   overflow: visible;
   margin-top: 40px;

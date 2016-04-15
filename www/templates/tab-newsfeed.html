@@ -1,20 +1,26 @@
 <ion-view view-title="News Feed" class="bg-newsfeed">
-    <div class="float-button" ng-click="openCreateActivityModal()">
-        <span class="height-fix">
+  <div class="float-button" ng-click="openCreateActivityModal()">
+    <span class="height-fix">
       <a class="content">
         <i class="ion-ios-plus-empty"></i>
       </a>
     </span>
+  </div>
+  <ion-content>
+    <div class="card text-center" ng-if="!newsfeeds.length">
+      <div class="item item-text-wrap">
+        No available activities yet...
+      </div>
     </div>
-    <ion-content>
-        <div class="card" ng-repeat="newsfeed in newsfeeds" ui-sref="activity-details(newsfeed)">
-            <div class="item item-avatar ">
-                <img src="http://cdn-img.easyicon.net/png/11100/1110055.gif">
-                <h2>{{ newsfeed.name }}</h2>
-                <p>{{ newsfeed.date_from | fromNow }}</p>
-                <p>{{ newsfeed.category.name }}</p>
-                <p>By {{ newsfeed.organized_by.name }}</p>
-            </div>
-        </div>
-    </ion-content>
+    <div class="card" ng-repeat="newsfeed in newsfeeds" ui-sref="activity-details(newsfeed)">
+      <div class="item item-avatar ">
+        <img src="http://cdn-img.easyicon.net/png/11100/1110055.gif">
+        <h2>{{ newsfeed.name }}</h2>
+        <p>{{ newsfeed.date_from | fromNow }}</p>
+        <p>{{ newsfeed.category.name }}</p>
+        <p>By
+          {{ newsfeed.organized_by.name }}</p>
+      </div>
+    </div>
+  </ion-content>
 </ion-view>

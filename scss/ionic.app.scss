@@ -18,6 +18,9 @@ $dark:                            #444 !default;
 $ionicons-font-path: '../lib/ionic/fonts' !default;
 // Include all of Ionic
 @import 'www/lib/ionic/scss/ionic';
+.whole-height {
+  height: 100vh;
+}
 .custom-card
 {
     overflow: visible;

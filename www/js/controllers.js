@@ -1,6 +1,20 @@
 angular.module('starter.controllers', [])
 
 .controller('LoginCtrl', function($q, $scope, $state, $ionicLoading, UserService) {
+  $scope.loginData = {};
+
+  $scope.login = function() {
+    $ionicLoading.show({
+      template: '<ion-spinner></ion-spinner>&nbsp;&nbsp;&nbsp; <span style="vertical-align: super">Logging in...</span>'
+    });
+    UserService.login().then(function(response) {
+      window.localStorage.api_key = response.data.api_key;
+      $ionicLoading.hide();
+      $state.go('tab.newsfeed')
+    });
+  }
+
+  //***************
   window.localStorage.clear()
   //facebookConnectPlugin.browserInit(625749530914767, "");
   var fbLoginSuccess = function(response) {
@@ -54,10 +68,10 @@ angular.module('starter.controllers', [])
 
   //This method is executed when the user press the "Login with facebook" button
   $scope.facebookSignIn = function() {
-    $ionicLoading.show({
-      template: '<ion-spinner></ion-spinner>&nbsp;&nbsp;&nbsp; <span style="vertical-align: super">Logging in...</span>'
-    });
     facebookConnectPlugin.getLoginStatus(function(success){
+      $ionicLoading.show({
+        template: '<ion-spinner></ion-spinner>&nbsp;&nbsp;&nbsp; <span style="vertical-align: super">Logging in...</span>'
+      });
       console.log('success', success);
       if(success.status === 'connected'){
         // The user is logged in and has authenticated your app, and response.authResponse supplies
@@ -97,10 +111,6 @@ angular.module('starter.controllers', [])
 
         console.log('getLoginStatus', success.status);
 
-        $ionicLoading.show({
-          template: '<ion-spinner></ion-spinner>&nbsp;&nbsp;&nbsp; <span style="vertical-align: super">Logging in...</span>'
-        });
-
         // Ask the permissions you need. You can learn more about
         // FB permissions here: https://developers.facebook.com/docs/facebook-login/permissions/v2.4
         facebookConnectPlugin.login(['email', 'public_profile'], fbLoginSuccess, fbLoginError);
@@ -119,7 +129,7 @@ angular.module('starter.controllers', [])
 })
 
 .controller('NewsFeedCtrl', function($scope, $state, $ionicModal, $ionicLoading, Category, Location, Activity, UserService) {
-  if(!window.localStorage.getItem('starter_facebook_user')) { $state.go('login');}
+  if(!window.localStorage.getItem('api_key')) { $state.go('login');}
   $ionicLoading.show({
     template: '<ion-spinner></ion-spinner>&nbsp;&nbsp;&nbsp; <span style="vertical-align: super">Loading news feed...</span>'
   });
