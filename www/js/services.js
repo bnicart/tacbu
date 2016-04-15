@@ -12,7 +12,6 @@ angular.module('starter.services', [])
   };
 
   var saveAccount = function(userInfo){
-    console.log('saveAccount', userInfo);
     $http.post(server_url + "/api/v1/sessions",userInfo).then(function(response){
       window.localStorage.api_key = response.data.api_key;
       $state.go('tab.newsfeed')
